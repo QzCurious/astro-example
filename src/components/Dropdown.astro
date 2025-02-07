@@ -1,0 +1,87 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  options: { value: string; label: string; }[];
+}
+
+const { id, label, options } = Astro.props;
+---
+
+<div class="dropdown">
+  <button class="dropdown-toggle">{label}</button>
+  <ul class="dropdown-menu">
+    {options.map(option => (
+      <li>
+        <button class="dropdown-item" data-value={option.value}>
+          {option.label}
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .dropdown-menu.active {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.dropdown').forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target as Node)) {
+        menu?.classList.remove('active');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Forms Demo">
+  <Navigation />
+  <main>
+    <h1>Forms and Inputs</h1>
+    
+    <form id="demoForm" class="form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="subscribe" name="subscribe">
+          Subscribe to newsletter
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Contact Method:</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="contact" value="email">
+            Email
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="contact" value="phone">
+            Phone
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+
+    <div id="formResult" class="form-result"></div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .checkbox-label,
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .submit-button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .submit-button:hover {
+    background-color: #27ae60;
+  }
+
+  .form-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .form-result.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .form-result.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('demoForm') as HTMLFormElement;
+  const formResult = document.getElementById('formResult');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      if (formResult) {
+        formResult.textContent = 'Form submitted successfully!';
+        formResult.className = 'form-result success';
+      }
+      form.reset();
+    }, 500);
+  });
+</script>

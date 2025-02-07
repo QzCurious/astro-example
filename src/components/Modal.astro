@@ -1,0 +1,84 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<div class="modal" id={id}>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{title}</h2>
+      <button class="close-modal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 70%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .modal.active {
+    display: block;
+  }
+</style>
+
+<script>
+  function setupModal(modalId: string) {
+    const modal = document.getElementById(modalId);
+    const closeBtn = modal?.querySelector('.close-modal');
+    
+    closeBtn?.addEventListener('click', () => {
+      modal?.classList.remove('active');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  }
+
+  // Setup all modals on the page
+  document.querySelectorAll('.modal').forEach((modal) => {
+    setupModal(modal.id);
+  });
+</script>

@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Dropdown from '../components/Dropdown.astro';
+import Modal from '../components/Modal.astro';
+---
+
+<Layout title="Interactive Components">
+  <Navigation />
+  <main>
+    <h1>Interactive Components</h1>
+
+    <section class="component-section">
+      <h2>Dropdown Menu</h2>
+      <Dropdown
+        id="themeDropdown"
+        label="Select Theme"
+        options={[
+          { value: 'light', label: 'Light Theme' },
+          { value: 'dark', label: 'Dark Theme' },
+          { value: 'system', label: 'System Default' }
+        ]}
+      />
+    </section>
+
+    <section class="component-section">
+      <h2>Popup Notification</h2>
+      <button id="showPopup" class="button">Show Popup</button>
+      <div id="popup" class="popup">
+        This is a popup notification!
+        <button class="close-popup">&times;</button>
+      </div>
+    </section>
+
+    <section class="component-section">
+      <h2>Modal Dialog</h2>
+      <button id="showModal" class="button">Open Modal</button>
+      
+      <Modal id="demoModal" title="Interactive Demo">
+        <p>This is a reusable modal component!</p>
+        <button id="closeModal" class="button">Close</button>
+      </Modal>
+    </section>
+
+    <section class="component-section">
+      <h2>Interactive Counter</h2>
+      <div class="counter">
+        <button id="decrementBtn" class="button">-</button>
+        <span id="counterValue">0</span>
+        <button id="incrementBtn" class="button">+</button>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .component-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+
+  .button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+
+  .button:hover {
+    background-color: #2980b9;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #2ecc71;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .popup.active {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .close-popup {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #counterValue {
+    font-size: 1.5rem;
+    min-width: 3rem;
+    text-align: center;
+  }
+</style>
+
+<script>
+  // Popup functionality
+  const showPopupBtn = document.getElementById('showPopup');
+  const popup = document.getElementById('popup');
+  const closePopupBtn = popup?.querySelector('.close-popup');
+
+  showPopupBtn?.addEventListener('click', () => {
+    popup?.classList.add('active');
+    setTimeout(() => {
+      popup?.classList.remove('active');
+    }, 3000);
+  });
+
+  closePopupBtn?.addEventListener('click', () => {
+    popup?.classList.remove('active');
+  });
+
+  // Modal functionality
+  const showModalBtn = document.getElementById('showModal');
+  const modal = document.getElementById('demoModal');
+  const closeModalBtn = document.getElementById('closeModal');
+
+  showModalBtn?.addEventListener('click', () => {
+    modal?.classList.add('active');
+  });
+
+  closeModalBtn?.addEventListener('click', () => {
+    modal?.classList.remove('active');
+  });
+
+  // Counter functionality
+  const decrementBtn = document.getElementById('decrementBtn');
+  const incrementBtn = document.getElementById('incrementBtn');
+  const counterValue = document.getElementById('counterValue');
+  let count = 0;
+
+  decrementBtn?.addEventListener('click', () => {
+    count--;
+    if (counterValue) counterValue.textContent = count.toString();
+  });
+
+  incrementBtn?.addEventListener('click', () => {
+    count++;
+    if (counterValue) counterValue.textContent = count.toString();
+  });
+</script>

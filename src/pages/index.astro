@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Modal from '../components/Modal.astro';
+---
+
+<Layout title="Home">
+  <Navigation />
+  <main>
+    <h1>Welcome to Our Demo Site</h1>
+    <p>This is a demonstration of various interactive components built with Astro.js</p>
+    
+    <button id="openModal" class="button">Open Welcome Modal</button>
+
+    <Modal id="welcomeModal" title="Welcome!">
+      <p>Thank you for visiting our demo site. Feel free to explore all the interactive components!</p>
+    </Modal>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  .button:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<script>
+  const openModalBtn = document.getElementById('openModal');
+  const modal = document.getElementById('welcomeModal');
+
+  openModalBtn?.addEventListener('click', () => {
+    modal?.classList.add('active');
+  });
+</script>
