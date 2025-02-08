@@ -4,9 +4,9 @@ const currentPath = Astro.url.pathname;
 
 <nav class="nav-container">
   <ul>
-    <li><a href="/" class={currentPath === "/" ? "active" : ""}>Home</a></li>
-    <li><a href="/forms" class={currentPath === "/forms" ? "active" : ""}>Forms</a></li>
-    <li><a href="/interactive" class={currentPath === "/interactive" ? "active" : ""}>Interactive</a></li>
+    <li><a href="/index.html" class={currentPath === "/" ? "active" : ""}>Home</a></li>
+    <li><a href="/forms/index.html" class={currentPath === "/forms" ? "active" : ""}>Forms</a></li>
+    <li><a href="/interactive/index.html" class={currentPath === "/interactive" ? "active" : ""}>Interactive</a></li>
   </ul>
 </nav>
 
