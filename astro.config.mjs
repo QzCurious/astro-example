@@ -1,8 +1,13 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import relativeLinks from "astro-relative-links";
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [relativeLinks()],
+  compressHTML: false,
+  vite: {
     build: {
-        minify: false
-    }
+      minify: false,
+    },
+  },
 });

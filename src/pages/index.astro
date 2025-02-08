@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Modal from '../components/Modal.astro';
+import qzImg from '../assets/logo_Qz.png'
 ---
 
 <Layout title="Home">
@@ -10,6 +11,32 @@ import Modal from '../components/Modal.astro';
     <h1>Welcome to Our Demo Site</h1>
     <p>This is a demonstration of various interactive components built with Astro.js</p>
     
+    <section class="images-section">
+      <h2>Local Images Example</h2>
+      
+      <!-- Method 1: Using public directory -->
+      <div class="image-container">
+        <h3>From Public Directory</h3>
+        <img 
+          src="/favicon.svg" 
+          alt="Astro Logo" 
+          class="demo-image"
+        />
+        <p class="caption">Image loaded from /public/favicon.svg</p>
+      </div>
+
+      <!-- Method 2: Using relative path -->
+      <div class="image-container">
+        <h3>Using Relative Import</h3>
+        <img 
+        src="/logo_Qz.png"
+          alt="Astro Logo" 
+          class="demo-image"
+        />
+        <p class="caption">Image loaded from src/assets/astro.svg</p>
+      </div>
+    </section>
+
     <button id="openModal" class="button">Open Welcome Modal</button>
 
     <Modal id="welcomeModal" title="Welcome!">
@@ -18,7 +45,7 @@ import Modal from '../components/Modal.astro';
   </main>
 </Layout>
 
-<style>
+<style is:inline>
   main {
     padding: 2rem;
     max-width: 800px;
@@ -37,6 +64,42 @@ import Modal from '../components/Modal.astro';
 
   .button:hover {
     background-color: #2980b9;
+  }
+
+  .images-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-container {
+    margin: 1.5rem 0;
+  }
+
+  .demo-image {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .caption {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #34495e;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
 </style>
 

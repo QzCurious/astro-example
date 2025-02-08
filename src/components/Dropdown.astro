@@ -8,7 +8,11 @@ interface Props {
 const { id, label, options } = Astro.props;
 ---
 
-<div class="dropdown">
+<!-- function Dropdown({ id, label, options }){
+return <div>{id}</div>
+} -->
+
+<div class="dropdown" >
   <button class="dropdown-toggle">{label}</button>
   <ul class="dropdown-menu">
     {options.map(option => (
@@ -21,7 +25,7 @@ const { id, label, options } = Astro.props;
   </ul>
 </div>
 
-<style>
+<style is:inline>
   .dropdown {
     position: relative;
     display: inline-block;
@@ -69,7 +73,7 @@ const { id, label, options } = Astro.props;
   }
 </style>
 
-<script>
+<script is:inline>
   document.querySelectorAll('.dropdown').forEach(dropdown => {
     const toggle = dropdown.querySelector('.dropdown-toggle');
     const menu = dropdown.querySelector('.dropdown-menu');
@@ -79,7 +83,7 @@ const { id, label, options } = Astro.props;
     });
 
     document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target as Node)) {
+      if (!dropdown.contains(e.target)) {
         menu?.classList.remove('active');
       }
     });
