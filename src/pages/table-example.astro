@@ -27,15 +27,14 @@ import Layout from "../layouts/Layout.astro";
   </main>
 </Layout>
 
-<!-- TODO: 用 CDN 的話要自己引入 jQuery，且記得要把 jQuery 放在 datatables 的前面 -->
-<script is:inline src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-></script>
-<link
-  rel="stylesheet"
-  href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css"
-/>
-<script is:inline src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"
-></script>
+ <!-- TODO: 用 astro 的方式引入會被 astro bundle 起來變成不易讀的檔名、內容 -->
+<!-- <script src="../external/jquery-3.7.1.min.js"></script> -->
+
+<!-- TODO: 記得要把 jQuery 放在 datatables 的前面 -->
+<script is:inline src="/jquery-3.7.1.min.js"></script>
+
+<link href="DataTables/datatables.min.css" rel="stylesheet">
+<script is:inline src="DataTables/datatables.min.js"></script>
 
 <style is:inline>
   main {
@@ -49,7 +48,7 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <!-- TODO: 比起用 npm，這邊我們就可以用 is:inline 了 -->
-<script is:inline>
+<script type="module" is:inline>
   // TODO: 做法 1
   let table = new DataTable("#myTable", {});
   // TODO: 做法 2
