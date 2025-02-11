@@ -1,0 +1,51 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Layout.astro";
+
+// TODO: dist 裡面的 <link> 會有亂數
+import "dataTables.net-dt/css/dataTables.dataTables.css";
+---
+
+<Layout title="Home">
+  <Navigation />
+  <main>
+    <table id="myTable" class="display">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Row 1 Data 1</td>
+          <td>Row 1 Data 2</td>
+        </tr>
+        <tr>
+          <td>Row 2 Data 1</td>
+          <td>Row 2 Data 2</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</Layout>
+
+<style is:inline>
+  main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  // TODO: import 跟 is:inline 會衝突
+  import DataTable from "datatables.net-dt";
+
+  let table = new DataTable("#myTable", {
+    // config options...
+  });
+</script>
