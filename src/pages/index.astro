@@ -1,38 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Modal from '../components/Modal.astro';
-import qzImg from '../assets/logo_Qz.png'
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Modal from "../components/Modal.astro";
+import qzImg from "../assets/logo_Qz.png";
 ---
 
 <Layout title="Home">
   <Navigation />
   <main>
     <h1>Welcome to Our Demo Site</h1>
-    <p>This is a demonstration of various interactive components built with Astro.js</p>
-    
+    <p>
+      This is a demonstration of various interactive components built with
+      Astro.js
+    </p>
+
     <section class="images-section">
       <h2>Local Images Example</h2>
-      
+
       <!-- Method 1: Using public directory -->
       <div class="image-container">
         <h3>From Public Directory</h3>
-        <img 
-          src="/favicon.svg" 
-          alt="Astro Logo" 
-          class="demo-image"
-        />
+        <img src="/favicon.svg" alt="Astro Logo" class="demo-image" />
         <p class="caption">Image loaded from /public/favicon.svg</p>
       </div>
 
       <!-- Method 2: Using relative path -->
       <div class="image-container">
         <h3>Using Relative Import</h3>
-        <img 
-        src="/logo_Qz.png"
-          alt="Astro Logo" 
-          class="demo-image"
-        />
+        <img src="/logo_Qz.png" alt="Astro Logo" class="demo-image" />
         <p class="caption">Image loaded from src/assets/astro.svg</p>
       </div>
     </section>
@@ -40,7 +35,10 @@ import qzImg from '../assets/logo_Qz.png'
     <button id="openModal" class="button">Open Welcome Modal</button>
 
     <Modal id="welcomeModal" title="Welcome!">
-      <p>Thank you for visiting our demo site. Feel free to explore all the interactive components!</p>
+      <p>
+        Thank you for visiting our demo site. Feel free to explore all the
+        interactive components!
+      </p>
     </Modal>
   </main>
 </Layout>
@@ -104,10 +102,10 @@ import qzImg from '../assets/logo_Qz.png'
 </style>
 
 <script>
-  const openModalBtn = document.getElementById('openModal');
-  const modal = document.getElementById('welcomeModal');
+  const openModalBtn = document.getElementById("openModal");
+  const modal = document.getElementById("welcomeModal");
 
-  openModalBtn?.addEventListener('click', () => {
-    modal?.classList.add('active');
+  openModalBtn?.addEventListener("click", () => {
+    modal?.classList.add("active");
   });
 </script>

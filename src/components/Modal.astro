@@ -64,21 +64,21 @@ const { id, title } = Astro.props;
 <script is:inline>
   function setupModal(modalId) {
     const modal = document.getElementById(modalId);
-    const closeBtn = modal?.querySelector('.close-modal');
-    
-    closeBtn?.addEventListener('click', () => {
-      modal?.classList.remove('active');
+    const closeBtn = modal?.querySelector(".close-modal");
+
+    closeBtn?.addEventListener("click", () => {
+      modal?.classList.remove("active");
     });
 
-    window.addEventListener('click', (e) => {
+    window.addEventListener("click", (e) => {
       if (e.target === modal) {
-        modal.classList.remove('active');
+        modal.classList.remove("active");
       }
     });
   }
 
   // Setup all modals on the page
-  document.querySelectorAll('.modal').forEach((modal) => {
+  document.querySelectorAll(".modal").forEach((modal) => {
     setupModal(modal.id);
   });
 </script>

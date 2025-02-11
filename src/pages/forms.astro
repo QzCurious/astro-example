@@ -1,27 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Forms Demo">
   <Navigation />
   <main>
     <h1>Forms and Inputs</h1>
-    
+
     <form id="demoForm" class="form">
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required />
       </div>
 
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required />
       </div>
 
       <div class="form-group">
         <label class="checkbox-label">
-          <input type="checkbox" id="subscribe" name="subscribe">
+          <input type="checkbox" id="subscribe" name="subscribe" />
           Subscribe to newsletter
         </label>
       </div>
@@ -30,11 +30,11 @@ import Navigation from '../components/Navigation.astro';
         <label>Preferred Contact Method:</label>
         <div class="radio-group">
           <label class="radio-label">
-            <input type="radio" name="contact" value="email">
+            <input type="radio" name="contact" value="email" />
             Email
           </label>
           <label class="radio-label">
-            <input type="radio" name="contact" value="phone">
+            <input type="radio" name="contact" value="phone" />
             Phone
           </label>
         </div>
@@ -124,20 +124,20 @@ import Navigation from '../components/Navigation.astro';
 </style>
 
 <script>
-  const form = document.getElementById('demoForm') as HTMLFormElement;
-  const formResult = document.getElementById('formResult');
+  const form = document.getElementById("demoForm") as HTMLFormElement;
+  const formResult = document.getElementById("formResult");
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    
+
     // Simulate form submission
     setTimeout(() => {
       if (formResult) {
-        formResult.textContent = 'Form submitted successfully!';
-        formResult.className = 'form-result success';
+        formResult.textContent = "Form submitted successfully!";
+        formResult.className = "form-result success";
       }
       form.reset();
     }, 500);

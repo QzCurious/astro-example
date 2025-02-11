@@ -2,7 +2,7 @@
 interface Props {
   id: string;
   label: string;
-  options: { value: string; label: string; }[];
+  options: { value: string; label: string }[];
 }
 
 const { id, label, options } = Astro.props;
@@ -11,17 +11,18 @@ const { id, label, options } = Astro.props;
 <!-- function Dropdown({ id, label, options }){
 return <div>{id}</div>
 } -->
-
-<div class="dropdown" >
+<div class="dropdown">
   <button class="dropdown-toggle">{label}</button>
   <ul class="dropdown-menu">
-    {options.map(option => (
-      <li>
-        <button class="dropdown-item" data-value={option.value}>
-          {option.label}
-        </button>
-      </li>
-    ))}
+    {
+      options.map((option) => (
+        <li>
+          <button class="dropdown-item" data-value={option.value}>
+            {option.label}
+          </button>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
@@ -47,7 +48,7 @@ return <div>{id}</div>
     left: 0;
     background-color: white;
     min-width: 160px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 0.5rem 0;
     margin: 0;
@@ -74,17 +75,17 @@ return <div>{id}</div>
 </style>
 
 <script is:inline>
-  document.querySelectorAll('.dropdown').forEach(dropdown => {
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-    const menu = dropdown.querySelector('.dropdown-menu');
+  document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    const toggle = dropdown.querySelector(".dropdown-toggle");
+    const menu = dropdown.querySelector(".dropdown-menu");
 
-    toggle?.addEventListener('click', () => {
-      menu?.classList.toggle('active');
+    toggle?.addEventListener("click", () => {
+      menu?.classList.toggle("active");
     });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       if (!dropdown.contains(e.target)) {
-        menu?.classList.remove('active');
+        menu?.classList.remove("active");
       }
     });
   });

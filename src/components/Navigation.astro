@@ -4,9 +4,21 @@ const currentPath = Astro.url.pathname;
 
 <nav class="nav-container">
   <ul>
-    <li><a href="/index.html" class={currentPath === "/" ? "active" : ""}>Home</a></li>
-    <li><a href="/forms/index.html" class={currentPath === "/forms" ? "active" : ""}>Forms</a></li>
-    <li><a href="/interactive/index.html" class={currentPath === "/interactive" ? "active" : ""}>Interactive</a></li>
+    <li>
+      <a href="/index.html" class={currentPath === "/" ? "active" : ""}>Home</a>
+    </li>
+    <li>
+      <a
+        href="/forms/index.html"
+        class={currentPath === "/forms" ? "active" : ""}>Forms</a
+      >
+    </li>
+    <li>
+      <a
+        href="/interactive/index.html"
+        class={currentPath === "/interactive" ? "active" : ""}>Interactive</a
+      >
+    </li>
   </ul>
 </nav>
 
@@ -34,7 +46,8 @@ const currentPath = Astro.url.pathname;
     transition: background-color 0.3s;
   }
 
-  a:hover, a.active {
+  a:hover,
+  a.active {
     background-color: #34495e;
   }
 </style>

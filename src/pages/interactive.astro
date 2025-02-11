@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Dropdown from '../components/Dropdown.astro';
-import Modal from '../components/Modal.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Dropdown from "../components/Dropdown.astro";
+import Modal from "../components/Modal.astro";
 ---
 
 <Layout title="Interactive Components">
@@ -16,9 +16,9 @@ import Modal from '../components/Modal.astro';
         id="themeDropdown"
         label="Select Theme"
         options={[
-          { value: 'light', label: 'Light Theme' },
-          { value: 'dark', label: 'Dark Theme' },
-          { value: 'system', label: 'System Default' }
+          { value: "light", label: "Light Theme" },
+          { value: "dark", label: "Dark Theme" },
+          { value: "system", label: "System Default" },
         ]}
       />
     </section>
@@ -35,7 +35,7 @@ import Modal from '../components/Modal.astro';
     <section class="component-section">
       <h2>Modal Dialog</h2>
       <button id="showModal" class="button">Open Modal</button>
-      
+
       <Modal id="demoModal" title="Interactive Demo">
         <p>This is a reusable modal component!</p>
         <button id="closeModal" class="button">Close</button>
@@ -130,46 +130,46 @@ import Modal from '../components/Modal.astro';
 
 <script>
   // Popup functionality
-  const showPopupBtn = document.getElementById('showPopup');
-  const popup = document.getElementById('popup');
-  const closePopupBtn = popup?.querySelector('.close-popup');
+  const showPopupBtn = document.getElementById("showPopup");
+  const popup = document.getElementById("popup");
+  const closePopupBtn = popup?.querySelector(".close-popup");
 
-  showPopupBtn?.addEventListener('click', () => {
-    popup?.classList.add('active');
+  showPopupBtn?.addEventListener("click", () => {
+    popup?.classList.add("active");
     setTimeout(() => {
-      popup?.classList.remove('active');
+      popup?.classList.remove("active");
     }, 3000);
   });
 
-  closePopupBtn?.addEventListener('click', () => {
-    popup?.classList.remove('active');
+  closePopupBtn?.addEventListener("click", () => {
+    popup?.classList.remove("active");
   });
 
   // Modal functionality
-  const showModalBtn = document.getElementById('showModal');
-  const modal = document.getElementById('demoModal');
-  const closeModalBtn = document.getElementById('closeModal');
+  const showModalBtn = document.getElementById("showModal");
+  const modal = document.getElementById("demoModal");
+  const closeModalBtn = document.getElementById("closeModal");
 
-  showModalBtn?.addEventListener('click', () => {
-    modal?.classList.add('active');
+  showModalBtn?.addEventListener("click", () => {
+    modal?.classList.add("active");
   });
 
-  closeModalBtn?.addEventListener('click', () => {
-    modal?.classList.remove('active');
+  closeModalBtn?.addEventListener("click", () => {
+    modal?.classList.remove("active");
   });
 
   // Counter functionality
-  const decrementBtn = document.getElementById('decrementBtn');
-  const incrementBtn = document.getElementById('incrementBtn');
-  const counterValue = document.getElementById('counterValue');
+  const decrementBtn = document.getElementById("decrementBtn");
+  const incrementBtn = document.getElementById("incrementBtn");
+  const counterValue = document.getElementById("counterValue");
   let count = 0;
 
-  decrementBtn?.addEventListener('click', () => {
+  decrementBtn?.addEventListener("click", () => {
     count--;
     if (counterValue) counterValue.textContent = count.toString();
   });
 
-  incrementBtn?.addEventListener('click', () => {
+  incrementBtn?.addEventListener("click", () => {
     count++;
     if (counterValue) counterValue.textContent = count.toString();
   });
