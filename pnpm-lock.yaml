@@ -14,9 +14,6 @@ importers:
       astro-relative-links:
         specifier: ^0.4.2
         version: 0.4.2(astro@4.16.18(rollup@4.34.6)(typescript@5.7.3))
-      datatables.net-dt:
-        specifier: ^2.2.2
-        version: 2.2.2
       prettier:
         specifier: ^3.4.2
         version: 3.5.0
@@ -736,12 +733,6 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  datatables.net-dt@2.2.2:
-    resolution: {integrity: sha512-Qfe9g/E3yAPTHoDASc1J0r5Yx++3Y3VdcEOFCupvfGJ8LhRrreebUC70UYEzO8vPOKnkutoRanW/VBMRIbXKXA==}
-
-  datatables.net@2.2.2:
-    resolution: {integrity: sha512-gfODIKE3gpgbVeZy2QGj2Dq9roO6hy00S+k1knklrqlMyAMrh1wt0Q6ryBUM7gU96U77ysbq8dYhxFdmcC/oPQ==}
-
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
@@ -1007,9 +998,6 @@ packages:
 
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
-
-  jquery@3.7.1:
-    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2387,15 +2375,6 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  datatables.net-dt@2.2.2:
-    dependencies:
-      datatables.net: 2.2.2
-      jquery: 3.7.1
-
-  datatables.net@2.2.2:
-    dependencies:
-      jquery: 3.7.1
-
   debug@4.4.0:
     dependencies:
       ms: 2.1.3
@@ -2690,8 +2669,6 @@ snapshots:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
-
-  jquery@3.7.1: {}
 
   js-tokens@4.0.0: {}
 

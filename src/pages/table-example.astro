@@ -1,9 +1,6 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Layout from "../layouts/Layout.astro";
-
-// TODO: dist 裡面的 <link> 會有亂數
-import "dataTables.net-dt/css/dataTables.dataTables.css";
 ---
 
 <Layout title="Home">
@@ -30,6 +27,16 @@ import "dataTables.net-dt/css/dataTables.dataTables.css";
   </main>
 </Layout>
 
+<!-- TODO: 用 CDN 的話要自己引入 jQuery，且記得要把 jQuery 放在 datatables 的前面 -->
+<script is:inline src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+></script>
+<link
+  rel="stylesheet"
+  href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css"
+/>
+<script is:inline src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"
+></script>
+
 <style is:inline>
   main {
     padding: 2rem;
@@ -41,11 +48,10 @@ import "dataTables.net-dt/css/dataTables.dataTables.css";
   }
 </style>
 
-<script>
-  // TODO: import 跟 is:inline 會衝突
-  import DataTable from "datatables.net-dt";
-
-  let table = new DataTable("#myTable", {
-    // config options...
-  });
+<!-- TODO: 比起用 npm，這邊我們就可以用 is:inline 了 -->
+<script is:inline>
+  // TODO: 做法 1
+  let table = new DataTable("#myTable", {});
+  // TODO: 做法 2
+  // let table2 = $("#myTable").DataTable({});
 </script>
