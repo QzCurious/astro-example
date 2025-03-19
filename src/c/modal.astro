@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="modal" data-name={name}>
+  This is a modal
+  <button data-btn={`${name}`} data-modal-close>Close</button>
+  <slot />
+</div>
+
+<script is:inline define:vars={{ a: name }}>
+  const modal = document.querySelector(`[data-name='${a}']`);
+  const modalClose = document.querySelector(`[data-btn='${a}']`);
+  modalClose.addEventListener("click", () => {
+    modal.classList.remove("open");
+  });
+</script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
+
+<style is:inline>
+  .modal {
+    display: none;
+    background-color: #2b56b9;
+    border-radius: 8px;
+    border: 1px solid #13745f;
+    padding: 1rem;
+  }
+  .modal.open {
+    display: block;
+  }
+</style>

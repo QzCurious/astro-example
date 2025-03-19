@@ -1,0 +1,49 @@
+---
+import Card from "../components/Card.astro";
+import Modal from "../c/modal.astro";
+import Table from "../c/table.astro";
+
+const data = [{ name: "John", age: 30, city: "New York" }];
+---
+
+<div>
+  This is the main page
+  <Table data={data} />
+
+  <button data-modal-triggerA>Open Modal A</button>
+  <Modal name="modal-a">
+    <Card title="Title A" body="Body A" href="https://www.google.com">
+      <Table data={data} />
+    </Card>
+  </Modal>
+
+  <button data-modal-triggerB>Open Modal B</button>
+  <Modal name="modal-b">
+    <Card title="Title B" body="Body B" href="https://www.google.com">
+      Card B
+    </Card>
+  </Modal>
+
+  <!-- <Modal>
+    <img src="https://picsum.photos/200/300" alt="Random Image" />
+  </Modal> -->
+</div>
+
+<script is:inline>
+  const modalTriggerA = document.querySelector("[data-modal-triggerA]");
+  const modalA = document.querySelector("[data-name='modal-a']");
+  modalTriggerA.addEventListener("click", () => {
+    modalA.classList.toggle("open");
+  });
+
+  const modalTriggerB = document.querySelector("[data-modal-triggerB]");
+  const modalB = document.querySelector("[data-name='modal-b']");
+  modalTriggerB.addEventListener("click", () => {
+    modalB.classList.toggle("open");
+  });
+</script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
