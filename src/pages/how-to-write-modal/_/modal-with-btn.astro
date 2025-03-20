@@ -1,0 +1,43 @@
+---
+import { generateUniqId } from "./utils";
+
+// 生成唯一的 id，避免跟別的 modal 撞 id
+const modalId = generateUniqId();
+---
+
+<!-- 
+  因為開關都是靠自己控制，所以不需要拿 identifier prop
+ -->
+<div style={{ border: "2px solid #ccc", borderRadius: "4px", padding: "16px" }}>
+  <button data-modal-btn={modalId}>Open modal</button>
+
+  <section data-modal={modalId} class="hidden">
+    <p>Modal 靠自己產一個 unique id 來控制開關</p>
+    <p>
+      應用情境: 使用這個 Modal
+      的人不需要自己寫開關按鈕，且所有用到的地方按鈕樣式都一致
+    </p>
+    <h1>Modal: {modalId}</h1>
+    <button data-close-modal-btn={modalId}>Close modal</button>
+  </section>
+</div>
+
+<script is:inline define:vars={{ modalId }}>
+  const modal = document.querySelector(`[data-modal="${modalId}"]`);
+
+  const btn = document.querySelector(`[data-modal-btn="${modalId}"]`);
+  btn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+  });
+
+  const closeBtn = document.querySelector(`[data-close-modal-btn="${modalId}"]`);
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+</script>
+
+<style is:global>
+  .hidden {
+    display: none;
+  }
+</style>

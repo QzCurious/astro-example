@@ -1,0 +1,60 @@
+---
+import { generateUniqId } from "./utils";
+
+// 為了讓別人可以控制開關
+const { identifier } = Astro.props;
+---
+
+<!-- 
+    自己做 convention: 使用這個 modal 的人想控制開關，就給一個 identifier prop，
+    然後自己在寫一個 <button data-modal-btn={identifier}>Open modal</button>。
+    這個元件會自動找到 [data-modal-btn={identifier}] 的按鈕，並且控制 [data-modal={identifier}] 的 modal 開關。
+
+    要控制這個 Modal 的話:
+    [data-modal-btn={identifier}] 用來 toggle
+    [data-close-modal-btn={identifier}] 用來關閉
+    [data-open-modal-btn={identifier}] 用來開啟
+ -->
+<section
+  data-modal={identifier}
+  class="hidden"
+  style={{ border: "2px solid #ccc", borderRadius: "4px", padding: "16px" }}
+>
+  <p>
+    應用情境: 使用這個 Modal 的人想自己寫開關按鈕，所以需要給一個 identifier
+    prop 來做連動
+  </p>
+  <h1>Modal: {identifier}</h1>
+  <button data-close-modal-btn={identifier}>Close modal</button>
+</section>
+
+<script is:inline define:vars={{ identifier }}>
+  const modal = document.querySelector(`[data-modal="${identifier}"]`);
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.matches(`[data-modal-btn="${identifier}"]`)) {
+      return;
+    }
+    modal.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.matches(`[data-close-modal-btn="${identifier}"]`)) {
+      return;
+    }
+    modal.classList.add("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.matches(`[data-open-modal-btn="${identifier}"]`)) {
+      return;
+    }
+    modal.classList.remove("hidden");
+  });
+</script>
+
+<style is:global>
+  .hidden {
+    display: none;
+  }
+</style>

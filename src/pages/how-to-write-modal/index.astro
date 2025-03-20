@@ -1,0 +1,30 @@
+---
+import ModalWithBtn from "./_/modal-with-btn.astro";
+import Modal from "./_/modal.astro";
+---
+
+<!-- 這是什麼神奇的語法，解決了中文亂碼問題 -->
+<meta charset="utf-8" />
+
+<div>
+  <div
+    style={{ border: "2px solid #ccc", borderRadius: "4px", padding: "16px" }}
+  >
+    <h1>Modal component 自己處理開關邏輯</h1>
+    <ModalWithBtn />
+    <ModalWithBtn />
+  </div>
+
+  <div
+    style={{ border: "2px solid #ccc", borderRadius: "4px", padding: "16px" }}
+  >
+    <h1>使用 Modal component 的時候，需要自己寫開關按鈕</h1>
+    <button data-modal-btn="modal-1">Toggle modal-1</button>
+    <button data-open-modal-btn="modal-1">Open modal-1</button>
+    <Modal identifier="modal-1" />
+
+    <button data-modal-btn="modal-2">Toggle modal-2</button>
+    <button data-close-modal-btn="modal-2">Close modal-2</button>
+    <Modal identifier="modal-2" />
+  </div>
+</div>
