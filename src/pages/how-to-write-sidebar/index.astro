@@ -1,0 +1,127 @@
+---
+import "@/styles/tailwind.css";
+import FloatingToggle from "./_/FloatingToggle.astro";
+import Sidebar from "./_/Sidebar.astro";
+---
+
+<div class="flex bg-gray-100">
+  <Sidebar />
+
+  <!-- flex-grow 讓 main-content 佔滿剩餘空間 -->
+  <main
+    class="flex-grow p-8 min-h-screen border-4 border-red-300"
+    data-main-content
+  >
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">
+          Welcome to the Dashboard
+        </h1>
+        <p class="text-gray-600 mt-2">
+          Here's an overview of your recent activity
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Recent Projects</h2>
+          <ul class="space-y-2">
+            <li
+              class="flex justify-between items-center p-3 hover:bg-gray-50 rounded"
+            >
+              <span>Website Redesign</span>
+              <span class="text-sm bg-blue-100 text-blue-800 py-1 px-2 rounded"
+                >In Progress</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center p-3 hover:bg-gray-50 rounded"
+            >
+              <span>Mobile App Development</span>
+              <span
+                class="text-sm bg-green-100 text-green-800 py-1 px-2 rounded"
+                >Completed</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center p-3 hover:bg-gray-50 rounded"
+            >
+              <span>Database Migration</span>
+              <span
+                class="text-sm bg-yellow-100 text-yellow-800 py-1 px-2 rounded"
+                >Pending</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Team Members</h2>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white"
+              >
+                JS
+              </div>
+              <div>
+                <p class="font-medium">John Smith</p>
+                <p class="text-sm text-gray-500">Lead Developer</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white"
+              >
+                AJ
+              </div>
+              <div>
+                <p class="font-medium">Alice Johnson</p>
+                <p class="text-sm text-gray-500">UX Designer</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white"
+              >
+                RD
+              </div>
+              <div>
+                <p class="font-medium">Robert Davis</p>
+                <p class="text-sm text-gray-500">Project Manager</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Activity Timeline</h2>
+        <div class="space-y-4">
+          <div class="border-l-2 border-blue-500 pl-4 pb-6">
+            <p class="text-sm text-gray-500">Today, 10:30 AM</p>
+            <p class="font-medium">New task assigned: Update documentation</p>
+          </div>
+          <div class="border-l-2 border-blue-500 pl-4 pb-6">
+            <p class="text-sm text-gray-500">Yesterday, 2:15 PM</p>
+            <p class="font-medium">
+              Meeting with client scheduled for next week
+            </p>
+          </div>
+          <div class="border-l-2 border-blue-500 pl-4">
+            <p class="text-sm text-gray-500">May 12, 9:00 AM</p>
+            <p class="font-medium">
+              Project milestone completed: Frontend prototype
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<FloatingToggle />
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {});
+</script>

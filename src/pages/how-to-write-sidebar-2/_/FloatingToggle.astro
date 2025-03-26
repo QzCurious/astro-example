@@ -1,0 +1,30 @@
+<div class="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-10">
+  <button
+    class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-full shadow-lg flex items-center transition-all"
+    data-sidebar-toggle
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 mr-2"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        clip-rule="evenodd"></path>
+    </svg>
+    Toggle Sidebar
+  </button>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.querySelector("[data-sidebar-toggle]");
+
+    toggleButton.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("SIDEBAR_TOGGLE"));
+    });
+  });
+</script>
+

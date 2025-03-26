@@ -1,0 +1,74 @@
+---
+// 請透過 SIDEBAR_TOGGLE 事件來控制側邊欄的顯示與隱藏
+// document.dispatchEvent(new CustomEvent("SIDEBAR_TOGGLE"));
+---
+
+<!-- 我也不確定，但感覺把狀態寫在 data-sidebar-state 感覺比較明確 -->
+<aside
+  class="bg-gray-800 w-64 flex-none text-white h-screen overflow-y-auto transition-transform duration-300 ease-in-out"
+  data-sidebar
+  data-sidebar-state="show"
+>
+  <div class="p-4">
+    <h2 class="text-xl font-bold mb-6">Navigation</h2>
+    <nav>
+      <ul class="space-y-2">
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Home</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded"
+            >Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Tasks</a
+          >
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded"
+            >Reports</a
+          >
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded"
+            >Settings</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector("[data-sidebar]");
+
+    // 不用 TailwindCSS class 以避免 specificity 問題；也是可以全都加 !important
+    document.addEventListener("SIDEBAR_TOGGLE", (event) => {
+      if (sidebar.dataset.sidebarState === "show") {
+        sidebar.style.transform = "translateX(-100%)";
+        sidebar.dataset.sidebarState = "hide";
+        sidebar.addEventListener(
+          "transitionend",
+          () => {
+            sidebar.style.width = "0px";
+            console.log("transitionend");
+          },
+          // 記得加這個，他會執行一次後自動移除監聽事件，不然每次 SIDEBAR_TOGGLE 事件
+          // 被觸發時都會多註冊一個監聽事件，可以 console.log 看看
+          { once: true }
+        );
+      } else {
+        sidebar.style.width = "";
+        sidebar.style.transform = "";
+        sidebar.dataset.sidebarState = "show";
+      }
+    });
+  });
+</script>

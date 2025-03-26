@@ -1,11 +1,14 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import relativeLinks from "astro-relative-links";
+// 不曉得為什麼裝了 TailwindCSS 後 relativeLinks 會報錯
+// import relativeLinks from "oastro-relative-links";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [relativeLinks()],
+  // integrations: [relativeLinks()],
   compressHTML: false,
   vite: {
+    plugins: [tailwindcss()],
     build: {
       minify: false,
     },
